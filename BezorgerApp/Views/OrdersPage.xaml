@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BezorgerApp.ViewModels"
              x:Class="BezorgerApp.Views.OrdersPage"
-             Title="OrdersPage">
-    <ScrollView>
-        <StackLayout Padding="20">
-            <Label Text="Bestellingen"
-                   FontSize="24"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center" />
+             BackgroundColor="#E6F9F5">
+    <ContentPage.BindingContext>
+        <vm:OrdersViewModel />
+    </ContentPage.BindingContext>
 
-            <CollectionView ItemsSource="{Binding Orders}">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <Frame Margin="10" Padding="10" BorderColor="LightGray" CornerRadius="10">
-                            <StackLayout>
-                                <Label Text="{Binding CustomerName}" FontAttributes="Bold" FontSize="18" />
-                                <Label Text="{Binding Address}" />
-                                <Label Text="{Binding Status}" TextColor="Blue" />
-                            </StackLayout>
-                        </Frame>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </StackLayout>
-    </ScrollView>
+    <CollectionView ItemsSource="{Binding Orders}" SelectionMode="Single" SelectionChanged="OnOrderSelected">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Frame Margin="10" Padding="10" BorderColor="#A8E6CF" BackgroundColor="White" CornerRadius="10" HasShadow="True">
+                    <VerticalStackLayout>
+                        <Label Text="{Binding CustomerName}" FontAttributes="Bold" FontSize="18" TextColor="#2C786C" />
+                        <Label Text="{Binding Address}" FontSize="14" TextColor="#555" />
+                        <Label Text="{Binding Status}" FontSize="12" TextColor="#88BDBC" />
+                    </VerticalStackLayout>
+                </Frame>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
 </ContentPage>

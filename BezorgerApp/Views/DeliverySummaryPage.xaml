@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BezorgerApp.Views.DeliverySummaryPage"
+             Title="Dagoverzicht"
+             BackgroundColor="#E6F9F5">
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="20">
+            <Label Text="✅ Afgeleverde pakketten" FontSize="20" FontAttributes="Bold" TextColor="#2C786C" />
+            <CollectionView ItemsSource="{Binding DeliveredOrders}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding CustomerName}" FontSize="16" TextColor="#379683" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Text="❌ Niet afgeleverd" FontSize="20" FontAttributes="Bold" Margin="0,20,0,0" TextColor="#FF6B6B" />
+            <CollectionView ItemsSource="{Binding FailedOrders}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Label Text="{Binding CustomerName}" FontSize="16" TextColor="#D9534F" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

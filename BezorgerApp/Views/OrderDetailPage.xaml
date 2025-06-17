@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BezorgerApp.Views.OrderDetailPage"
+             xmlns:vm="clr-namespace:BezorgerApp.ViewModels"
+             Title="Leveringsdetails"
+             BackgroundColor="#E6F9F5">
+    <ContentPage.Content>
+        <StackLayout Padding="20" Spacing="15">
+            <Label Text="{Binding SelectedOrder.CustomerName}" FontSize="24" FontAttributes="Bold" TextColor="#2C786C" />
+            <Label Text="{Binding SelectedOrder.Address}" FontSize="18" TextColor="#333" />
+            <Label Text="Status: {Binding SelectedOrder.Status}" FontSize="16" TextColor="#88BDBC" />
+
+            <Button Text="📸 Voeg foto toe" Command="{Binding AddPhotoCommand}" BackgroundColor="#88BDBC" TextColor="White" CornerRadius="10" />
+            <Button Text="📍 Voeg locatie toe" Command="{Binding AddGpsCommand}" BackgroundColor="#88BDBC" TextColor="White" CornerRadius="10" />
+            <Button Text="✔️ Bevestig levering" Command="{Binding SaveStatusCommand}" BackgroundColor="#379683" TextColor="White" CornerRadius="10" />
+            <Button Text="➡️ Volgende levering" Command="{Binding NextDeliveryCommand}" BackgroundColor="#2C786C" TextColor="White" CornerRadius="10" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage> 

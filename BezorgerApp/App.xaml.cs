@@ -4,12 +4,13 @@ namespace BezorgerApp
 {
     public partial class App : Application
     {
-        public App()
+        public static IServiceProvider Services { get; private set; }
+
+        public App(IServiceProvider serviceProvider)
         {
             InitializeComponent();
-            MainPage = new OrdersPage();
+            Services = serviceProvider;
+            MainPage = new AppShell(); // of jouw startpagina
         }
-
-        
     }
 }

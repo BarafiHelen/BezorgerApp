@@ -2,33 +2,26 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using BezorgerApp.Models;
+using BezorgerApp.Services;
 
 namespace BezorgerApp.ViewModels
 {
     public class OrdersViewModel : INotifyPropertyChanged
     {
-        public ObservableCollection<Order> Orders { get; set; }
+        public ObservableCollection<Order> Orders { get; set; } = new();
+        private readonly ApiService _apiService = new();
 
         public OrdersViewModel()
         {
-            // Dummydata
-            Orders = new ObservableCollection<Order>
-            {
-                new Order
-                {
-                    Id = 1,
-                    CustomerName = "Helen Barafi",
-                    Address = "Straat 10, Amsterdam",
-                    Status = "Wachtend"
-                },
-                new Order
-                {
-                    Id = 2,
-                    CustomerName = "Sara Noor",
-                    Address = "Laan 25, Utrecht",
-                    Status = "Onderweg"
-                }
-            };
+            LoadOrders();
+        }
+
+        private async void LoadOrders()
+        {
+            var result = await _apiService.GetOrdersAsync();
+            Orders.Clear();
+            foreach (var order in result)
+                Orders.Add(order);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

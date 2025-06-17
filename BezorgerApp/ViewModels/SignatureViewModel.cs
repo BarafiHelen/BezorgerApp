@@ -5,21 +5,25 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace BezorgerApp.ViewModels
 {
-    public class MapViewModel : INotifyPropertyChanged
+    public class SignatureViewModel : INotifyPropertyChanged
     {
-        private Location _currentLocation;
-        public Location CurrentLocation
+        public string SignatureBase64 { get; set; }
+        public string SignedBy { get; set; }
+
+        public ICommand SaveSignatureCommand { get; }
+
+        public SignatureViewModel()
         {
-            get => _currentLocation;
-            set { _currentLocation = value; OnPropertyChanged(); }
+            SaveSignatureCommand = new Command(() => Save());
         }
 
-        public MapViewModel()
+        private void Save()
         {
-            // Later GPS ophalen en invullen
+            // Handtekening opslaan of versturen
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

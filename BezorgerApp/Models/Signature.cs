@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace BezorgerApp.Models
 {
-    internal class Signature
+    public class Signature
     {
+        public string Base64Image { get; set; } // getekende handtekening als string
+        public DateTime SignedAt { get; set; }
+        public string SignedBy { get; set; }
     }
 }

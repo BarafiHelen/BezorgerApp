@@ -8,7 +8,8 @@ public partial class OrdersPage : ContentPage
     public OrdersPage()
     {
         InitializeComponent();
-        BindingContext = new OrdersViewModel();
+        BindingContext = App.Services.GetService<OrdersViewModel>();
+
     }
     private async void OnOrderSelected(object sender, SelectionChangedEventArgs e)
     {

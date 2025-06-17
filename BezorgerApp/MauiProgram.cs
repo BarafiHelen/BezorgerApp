@@ -9,13 +9,14 @@ namespace BezorgerApp
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+
             builder
-                .UseMauiApp<App>()
-                .ConfigureFonts(fonts =>
-                {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+              .UseMauiApp<App>()
+              .ConfigureFonts(fonts =>
+              {
+                  fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+                  fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+              });
 
 #if DEBUG
             builder.Logging.AddDebug();
@@ -28,6 +29,10 @@ namespace BezorgerApp
             builder.Services.AddTransient<SignatureViewModel>();
             builder.Services.AddTransient<DeliveryOverviewViewModel>();
             builder.Services.AddTransient<MapViewModel>();
+
+
+            var app = builder.Build();
+
 
             return builder.Build();
         }

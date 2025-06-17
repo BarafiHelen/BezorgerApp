@@ -9,10 +9,11 @@ namespace BezorgerApp.ViewModels
     public class OrdersViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<Order> Orders { get; set; } = new();
-        private readonly ApiService _apiService = new();
+        private readonly ApiService _apiService;
 
-        public OrdersViewModel()
+        public OrdersViewModel(ApiService apiService)
         {
+            _apiService = apiService;
             LoadOrders();
         }
 

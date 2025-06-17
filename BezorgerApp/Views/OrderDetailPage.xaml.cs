@@ -1,15 +1,21 @@
 using BezorgerApp.Models;
+using BezorgerApp.Services;
 using BezorgerApp.ViewModels;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui;
 
 namespace BezorgerApp.Views;
 
-[QueryProperty(nameof(SelectedOrder), "SelectedOrder")]
 public partial class OrderDetailPage : ContentPage
 {
     public Order SelectedOrder
     {
         get => (BindingContext as OrderDetailViewModel)?.SelectedOrder;
-        set => BindingContext = new OrderDetailViewModel(value);
+        set
+        {
+            var apiService = App.Services.GetService<ApiService>();
+            BindingContext = new OrderDetailViewModel(value, apiService);
+        }
     }
 
     public OrderDetailPage()

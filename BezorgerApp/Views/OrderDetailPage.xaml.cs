@@ -3,11 +3,17 @@ using BezorgerApp.ViewModels;
 
 namespace BezorgerApp.Views;
 
+[QueryProperty(nameof(SelectedOrder), "SelectedOrder")]
 public partial class OrderDetailPage : ContentPage
 {
-	public OrderDetailPage(Order selectedOrder)
-	{
-		InitializeComponent();
-        BindingContext = new OrderDetailViewModel(selectedOrder);
+    public Order SelectedOrder
+    {
+        get => (BindingContext as OrderDetailViewModel)?.SelectedOrder;
+        set => BindingContext = new OrderDetailViewModel(value);
+    }
+
+    public OrderDetailPage()
+    {
+        InitializeComponent();
     }
 }

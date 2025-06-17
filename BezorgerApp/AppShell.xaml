@@ -7,9 +7,9 @@
     Shell.FlyoutBehavior="Flyout"
     Title="BezorgerApp">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <ShellContent Title="Bestellingen" ContentTemplate="{DataTemplate views:OrdersPage}" Route="orders" />
+    <ShellContent Title="Details" ContentTemplate="{DataTemplate views:OrderDetailPage}" Route="orderdetail" />
+    <ShellContent Title="Handtekening" ContentTemplate="{DataTemplate views:SignaturePage}" Route="signature" />
+    <ShellContent Title="Overzicht" ContentTemplate="{DataTemplate views:DeliverySummaryPage}" Route="summary" />
 
 </Shell>

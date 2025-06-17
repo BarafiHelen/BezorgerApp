@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using BezorgerApp.Services;
+using BezorgerApp.ViewModels;
 
 namespace BezorgerApp
 {
@@ -16,8 +18,16 @@ namespace BezorgerApp
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
+
+            // Dependency injection
+            builder.Services.AddSingleton<ApiService>();
+            builder.Services.AddTransient<OrdersViewModel>();
+            builder.Services.AddTransient<OrderDetailViewModel>();
+            builder.Services.AddTransient<SignatureViewModel>();
+            builder.Services.AddTransient<DeliveryOverviewViewModel>();
+            builder.Services.AddTransient<MapViewModel>();
 
             return builder.Build();
         }

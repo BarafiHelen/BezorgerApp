@@ -2,11 +2,29 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BezorgerApp.Views.OrderDetailPage"
-             Title="OrderDetailPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
-</ContentPage>
+             Title="Leveringsdetails"
+             xmlns:vm="clr-namespace:BezorgerApp.ViewModels">
+   
+    <StackLayout Padding="20" Spacing="15">
+        <Label Text="Klant:" FontAttributes="Bold" />
+        <Label Text="{Binding SelectedOrder.CustomerName}" />
+
+        <Label Text="Adres:" FontAttributes="Bold" />
+        <Label Text="{Binding SelectedOrder.Address}" />
+
+        <Label Text="Status:" FontAttributes="Bold" />
+        <Picker SelectedItem="{Binding SelectedOrder.Status}">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Gepland</x:String>
+                    <x:String>Onderweg</x:String>
+                    <x:String>Geleverd</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Button Text="Maak Foto" />
+        <Button Text="Voeg GPS Locatie toe" />
+        <Button Text="Bevestig &amp; Ga naar Handtekening" />
+    </StackLayout>
+</ContentPage> 

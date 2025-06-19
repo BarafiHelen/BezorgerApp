@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BezorgerApp.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -11,19 +12,33 @@ namespace BezorgerApp.ViewModels
 {
     public class SignatureViewModel : INotifyPropertyChanged
     {
+        private readonly ApiService _apiService;
+
         public string SignatureBase64 { get; set; }
         public string SignedBy { get; set; }
+        public int OrderId { get; set; }
 
-        public ICommand SaveSignatureCommand { get; }
+        public ICommand UploadSignatureCommand { get; }
 
-        public SignatureViewModel()
+        public SignatureViewModel(ApiService apiService)
         {
-            SaveSignatureCommand = new Command(() => Save());
+            _apiService = apiService;
+            UploadSignatureCommand = new Command(async () => await UploadSignature());
         }
 
-        private void Save()
+        private async Task UploadSignature()
         {
-            // Handtekening opslaan of versturen
+            if (string.IsNullOrEmpty(SignatureBase64))
+            {
+                await Shell.Current.DisplayAlert("Fout", "Geen handtekening gevonden.", "OK");
+                return;
+            }
+
+            var success = await _apiService.UploadSignatureAsync(OrderId, SignatureBase64);
+            if (success)
+                await Shell.Current.DisplayAlert("Succes", "Handtekening opgeslagen", "OK");
+            else
+                await Shell.Current.DisplayAlert("Fout", "Opslaan mislukt", "OK");
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

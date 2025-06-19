@@ -7,6 +7,8 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using MauiLocation = Microsoft.Maui.Devices.Sensors.Location;
+
 
 namespace BezorgerApp.ViewModels
 {
@@ -49,9 +51,28 @@ namespace BezorgerApp.ViewModels
             }
         }
 
-        private async Task AddGps()
+        public async Task AddGps()
         {
-            
+            try
+            {
+                MauiLocation location = await Geolocation.GetLastKnownLocationAsync();
+                if (location != null)
+                {
+                    var loc = new BezorgerApp.Models.Location
+                    {
+                        Latitude = location.Latitude,
+                        Longitude = location.Longitude,
+                        Timestamp = DateTime.UtcNow
+                    };
+
+                    await _apiService.UploadLocationAsync(SelectedOrder.Id, loc);
+                    await Shell.Current.DisplayAlert("Locatie", "Locatie toegevoegd", "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                await Shell.Current.DisplayAlert("Fout", $"Kan locatie niet ophalen: {ex.Message}", "OK");
+            }
         }
 
         private void AddPhoto()

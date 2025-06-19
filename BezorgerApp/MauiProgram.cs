@@ -30,10 +30,6 @@ namespace BezorgerApp
             builder.Services.AddTransient<DeliveryOverviewViewModel>();
             builder.Services.AddTransient<MapViewModel>();
 
-
-            var app = builder.Build();
-
-
             return builder.Build();
         }
     }

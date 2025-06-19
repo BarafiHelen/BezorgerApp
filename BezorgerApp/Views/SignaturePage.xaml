@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:BezorgerApp.ViewModels"
              x:Class="BezorgerApp.Views.SignaturePage"
              Title="Handtekening"
              BackgroundColor="#E6F9F5">
+    
+
     <StackLayout Padding="20" Spacing="15">
         <Label Text="Laat de klant hier tekenen:" FontSize="18" TextColor="#2C786C" />
+
+        <!-- Hier komt in de toekomst handtekening canvas -->
         <BoxView HeightRequest="200" Color="#A8E6CF" CornerRadius="10" />
-        
+
+        <Entry Placeholder="Naam klant" Text="{Binding SignedBy}" />
+
         <Button Text="Opslaan" Command="{Binding SaveSignatureCommand}" BackgroundColor="#379683" TextColor="White" CornerRadius="10" />
     </StackLayout>
 </ContentPage>

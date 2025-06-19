@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BezorgerApp.Views.OrderDetailPage"
              xmlns:vm="clr-namespace:BezorgerApp.ViewModels"
+             x:Class="BezorgerApp.Views.OrderDetailPage"
              Title="Leveringsdetails"
              BackgroundColor="#E6F9F5">
     <ContentPage.Content>
@@ -17,4 +17,4 @@
             <Button Text="➡️ Volgende levering" Command="{Binding NextDeliveryCommand}" BackgroundColor="#2C786C" TextColor="White" CornerRadius="10" />
         </StackLayout>
     </ContentPage.Content>
-</ContentPage> 
+</ContentPage>

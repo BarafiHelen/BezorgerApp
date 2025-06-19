@@ -4,9 +4,6 @@
              xmlns:vm="clr-namespace:BezorgerApp.ViewModels"
              x:Class="BezorgerApp.Views.OrdersPage"
              BackgroundColor="#E6F9F5">
-    <ContentPage.BindingContext>
-        <vm:OrdersViewModel />
-    </ContentPage.BindingContext>
 
     <CollectionView ItemsSource="{Binding Orders}" SelectionMode="Single" SelectionChanged="OnOrderSelected">
         <CollectionView.ItemTemplate>

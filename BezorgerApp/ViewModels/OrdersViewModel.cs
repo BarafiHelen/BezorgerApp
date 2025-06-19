@@ -19,10 +19,17 @@ namespace BezorgerApp.ViewModels
 
         private async void LoadOrders()
         {
-            var result = await _apiService.GetOrdersAsync();
-            Orders.Clear();
-            foreach (var order in result)
-                Orders.Add(order);
+            try
+            {
+                var result = await _apiService.GetOrdersAsync();
+                Orders.Clear();
+                foreach (var order in result)
+                    Orders.Add(order);
+            }
+            catch (Exception ex)
+            {
+                await Shell.Current.DisplayAlert("Fout", $"Bestellingen ophalen mislukt: {ex.Message}", "OK");
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

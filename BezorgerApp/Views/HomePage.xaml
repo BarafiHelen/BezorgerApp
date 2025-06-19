@@ -2,12 +2,10 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BezorgerApp.Views.HomePage"
-             Title="HomePage"
+             Title="Welkom"
              BackgroundColor="#E6F9F5">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <StackLayout Padding="20" Spacing="20" VerticalOptions="Center">
+        <Label Text="Welkom bij BezorgerApp" FontSize="24" FontAttributes="Bold" TextColor="#2C786C" HorizontalOptions="Center" />
+        <Button Text="Start leveringen" BackgroundColor="#379683" TextColor="White" Clicked="OnStartClicked" />
+    </StackLayout>
 </ContentPage>

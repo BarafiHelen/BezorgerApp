@@ -10,7 +10,7 @@ namespace BezorgerApp
         {
             InitializeComponent();
             Services = serviceProvider;
-            MainPage = new AppShell(); // of jouw startpagina
+            MainPage = new AppShell(); 
         }
     }
 }

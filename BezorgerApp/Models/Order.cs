@@ -10,8 +10,9 @@ namespace BezorgerApp.Models
     {
         public int Id { get; set; }
         public string TrackingNumber { get; set; }
-        public string Address { get; set; }
-        public string CustomerName { get; set; } 
+        public string CustomerName => Customer?.Name ?? "(Onbekend)";
+        public string Address => Customer?.Address ?? "(Geen adres)";
+
         public string Status { get; set; }    // "Gepland", "Onderweg", "Geleverd", etc.
         public DateTime PlannedTime { get; set; }
        
@@ -21,5 +22,7 @@ namespace BezorgerApp.Models
 
         public bool DeliverySucceeded { get; set; } // Succesvolle levering?
         public DateTime? DeliveredAt { get; set; } // Levertijd
+
+        public Customer Customer { get; set; } // ← Ontvangen van API
     }
 }

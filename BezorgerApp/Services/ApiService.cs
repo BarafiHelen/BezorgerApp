@@ -25,6 +25,7 @@ namespace BezorgerApp.Services
                 if (response.IsSuccessStatusCode)
                 {
                     var json = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"API Response: {json}");
                     return JsonSerializer.Deserialize<List<Order>>(json);
                 }
             }

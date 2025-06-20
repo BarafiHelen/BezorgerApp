@@ -22,6 +22,7 @@ namespace BezorgerApp.ViewModels
             try
             {
                 var result = await _apiService.GetOrdersAsync();
+                Console.WriteLine($"Aantal bestellingen opgehaald: {result.Count}");
                 Orders.Clear();
                 foreach (var order in result)
                     Orders.Add(order);
